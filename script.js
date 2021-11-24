@@ -1,10 +1,42 @@
+let moving_size = 50;
+let static_size = 20;
+
 
 function setup() {
-	createCanvas(640,480);
+	createCanvas(windowWidth, windowHeight);
+	frameRate(15);
 }
 
 function draw() {
-	background(random(50));
-	square(50, 50, 75);
-	ellipse(150, 150, 75);
+	//background
+	background(random(230, 240));
+	//left
+	noStroke();
+	fill(0);
+	rect(97, 169, 79, 12);
+
+	//right
+	rect(365, 184, 20, 15);
+	fill(20, 20, 120)
+
+	beginShape();
+	vertex(365,199);
+	vertex(385,199);
+	vertex(372,216);
+	vertex(358,216);
+	endShape(CLOSE);
+
+	//bottom
+	noFill();
+	stroke(130);
+	strokeWeight(2);
+	ellipse(255, 350, static_size, static_size);
+
+	//interactions
+	stroke(180);
+	ellipse(mouseX, mouseY, moving_size, moving_size);
+	console.log(mouseX, mouseY);
+	if(mouseIsPressed){
+		static_size = floor(random(5,200));
+	}
 }
